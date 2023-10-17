@@ -15,8 +15,7 @@ namespace PharmacyMVC.Controllers
         }
         public IActionResult Index()
         {
-            var medicines =  _context.Medicines.ToList();
-            Console.WriteLine(medicines.Count);
+            var medicines = _context.Medicines.ToList();
             return View(medicines);
         }
     }
