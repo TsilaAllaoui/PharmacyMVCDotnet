@@ -18,5 +18,21 @@ namespace PharmacyMVC.Controllers
         {
             return View(await _medicineService.GetAllMedicines());
         }
+
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Medicine medicine)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(medicine);
+            }
+            await _medicineService.AddMedicine(medicine);
+            return RedirectToAction("Index");
+        }
     }
 }

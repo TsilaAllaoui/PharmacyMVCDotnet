@@ -1,0 +1,25 @@
+@model Medicine
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form asp-action="Create" method="POST">
+  <div class="form-group">
+    <label asp-for="Name">Name:</label>
+    <input asp-for="Name" class="form-control" id="name" placeholder="Enter medicine name...">
+    <span asp-validation-for="Name" class="text-danger"/>
+  </div>
+  <div class="form-group">
+    <label asp-for="Price">Price:</label>
+    <input type="number" asp-for="Price" class="form-control" id="price" placeholder="Enter medicine price...">
+    <span asp-validation-for="Name" class="text-danger"/>
+  </div>
+  <div class="form-group">
+    <label asp-for="Quantity">Quantity:</label>
+    <input type="number" asp-for="Quantity" class="form-control" id="quantity" placeholder="Enter medicine quantity...">
+    <span asp-validation-for="Name" class="text-danger"/>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

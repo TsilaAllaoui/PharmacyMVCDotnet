@@ -31,12 +31,14 @@ namespace PharmacyMVC.Services
         public async Task<bool> AddMedicine(Medicine medicine)
         {
             var medicineAdded = await _context.Medicines.AddAsync(medicine);
+            await _context.SaveChangesAsync();
             return medicineAdded is not null;
         }
 
         public async Task<bool> UpdateMedicine(Medicine newMedicine)
         {
             var updatedMedicine = _context.Medicines.Update(newMedicine);
+            await _context.SaveChangesAsync();
             return updatedMedicine is not null;
         }
 
@@ -48,6 +50,7 @@ namespace PharmacyMVC.Services
                 throw new Exception($"Item with ID:{id} not found!");
             }
             _context.Medicines.Remove(foundMedicine);
+            await _context.SaveChangesAsync();
             return foundMedicine is not null;
         }
     }
