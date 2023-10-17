@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using PharmacyMVC.Data;
+using PharmacyMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IMedicineService, MedicineService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

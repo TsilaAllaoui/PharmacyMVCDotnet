@@ -6,7 +6,7 @@ namespace PharmacyMVC.Services
 {
     public class MedicineService : IMedicineService
     {
-        private readonly DbContext _context;
+        private readonly DataContext _context;
         public MedicineService(DataContext context)
         {
             _context = context;
@@ -14,27 +14,41 @@ namespace PharmacyMVC.Services
 
         public async Task<List<Medicine>> GetAllMedicines()
         {
-            throw new NotImplementedException();
+            return await _context.Medicines.ToListAsync();
         }
 
-        public Task<Medicine> GetSingleMedicineById(long id)
+        public async Task<Medicine> GetSingleMedicineById(long id)
         {
-            throw new NotImplementedException();
+            var medicine = await _context.Medicines.FindAsync(id);
+            if (medicine is null)
+            {
+                throw new Exception($"Item with ID:{id} not found!");
+            }
+
+            return medicine;
         }
 
-        public bool AddMedicine(Medicine mediicine)
+        public async Task<bool> AddMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+            var medicineAdded = await _context.Medicines.AddAsync(medicine);
+            return medicineAdded is not null;
         }
 
-        public bool UpdateMedicine(Medicine newMedicine)
+        public async Task<bool> UpdateMedicine(Medicine newMedicine)
         {
-            throw new NotImplementedException();
+            var updatedMedicine = _context.Medicines.Update(newMedicine);
+            return updatedMedicine is not null;
         }
 
-        public bool DeleteMedicine(long id)
+        public async Task<bool> DeleteMedicine(long id)
         {
-            throw new NotImplementedException();
+            var foundMedicine = await _context.Medicines.FindAsync( id);
+            if (foundMedicine is null)
+            {
+                throw new Exception($"Item with ID:{id} not found!");
+            }
+            _context.Medicines.Remove(foundMedicine);
+            return foundMedicine is not null;
         }
     }
 }

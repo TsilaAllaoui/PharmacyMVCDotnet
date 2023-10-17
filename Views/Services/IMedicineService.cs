@@ -6,8 +6,8 @@ namespace PharmacyMVC.Services
     {
         public Task<List<Medicine>> GetAllMedicines();
         public Task<Medicine> GetSingleMedicineById(long id);
-        public bool AddMedicine(Medicine mediicine);
-        public bool UpdateMedicine(Medicine newMedicine);
-        public bool DeleteMedicine(long id);
+        public Task<bool> AddMedicine(Medicine mediicine);
+        public Task<bool> UpdateMedicine(Medicine newMedicine);
+        public Task<bool> DeleteMedicine(long id);
     }
 }

@@ -2,21 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using PharmacyMVC.Data;
 using PharmacyMVC.Models;
+using PharmacyMVC.Services;
 
 namespace PharmacyMVC.Controllers
 {
     public class MedicineController : Controller
     {
-        private readonly DataContext _context;
+        private readonly IMedicineService _medicineService;
 
-        public MedicineController(DataContext context) 
+        public MedicineController(IMedicineService medicineService) 
         {
-            _context = context;
+            _medicineService = medicineService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var medicines = _context.Medicines.ToList();
-            return View(medicines);
+            return View(await _medicineService.GetAllMedicines());
         }
     }
 }
