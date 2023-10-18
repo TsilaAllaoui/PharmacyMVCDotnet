@@ -11,6 +11,7 @@ namespace PharmacyMVC.Models
         Suppositorie,
         Drop,
         Inhaler,
-        Injection
+        Injection,
+        Lotion
     }
 }

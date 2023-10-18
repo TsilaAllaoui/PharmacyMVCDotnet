@@ -19,7 +19,7 @@ namespace PharmacyMVC.Services
 
         public async Task<Medicine> GetSingleMedicineById(long id)
         {
-            var medicine = await _context.Medicines.FindAsync(id);
+            var medicine = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
             if (medicine is null)
             {
                 throw new Exception($"Item with ID:{id} not found!");
@@ -44,7 +44,7 @@ namespace PharmacyMVC.Services
 
         public async Task<bool> DeleteMedicine(long id)
         {
-            var foundMedicine = await _context.Medicines.FindAsync( id);
+            var foundMedicine = await _context.Medicines.FindAsync(id);
             if (foundMedicine is null)
             {
                 throw new Exception($"Item with ID:{id} not found!");

@@ -10,7 +10,7 @@ namespace PharmacyMVC.Controllers
     {
         private readonly IMedicineService _medicineService;
 
-        public MedicineController(IMedicineService medicineService) 
+        public MedicineController(IMedicineService medicineService)
         {
             _medicineService = medicineService;
         }
@@ -33,6 +33,29 @@ namespace PharmacyMVC.Controllers
             }
             await _medicineService.AddMedicine(medicine);
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Details(long id)
+        {
+            var medicine = await _medicineService.GetSingleMedicineById(id);
+            return View(medicine);
+        }
+
+        public async Task<IActionResult> Edit(long id)
+        {
+            var medicine = await _medicineService.GetSingleMedicineById(id);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Medicine medicine)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(medicine);
+            }
+            await _medicineService.UpdateMedicine(medicine);
+            return RedirectToAction("Details", "Medicine", new { id = medicine.Id });
         }
     }
 }

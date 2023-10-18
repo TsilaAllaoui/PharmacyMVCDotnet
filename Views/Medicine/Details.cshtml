@@ -1,0 +1,44 @@
+@model Medicine
+
+<style>
+    * {
+        user-select: none;
+    }
+
+    h1 {
+        margin: 1rem 0;
+    }
+
+    .container {
+        display: flex;
+        width: 100vw;
+    }
+
+    #left {
+        width: 60%;
+        height: 400px;
+        border: solid 1px grey;
+        background-size: cover;
+        border-radius: 5px;
+    }
+
+    #right {
+        padding-left: 2rem;
+    }
+
+    #right span {
+        font-weight: 700;
+        margin-right: 1rem;
+    }
+</style>
+
+<h1>@Model.Name</h1>
+<div class="container">
+    <div id="left" style="background-image: url(@Model.Image);">
+    </div>
+    <div id="right">
+        <p><span>Price:</span> @Model.Price Ar</p>
+        <p><span>Type:</span> @Model.Type</p>
+        <p><span>Quantity:</span> @Model.Quantity pcs</p>
+    </div>
+</div>

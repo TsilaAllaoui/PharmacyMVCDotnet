@@ -1,7 +1,36 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<style>
+    * {
+        user-select: none;
+    }
+
+    h1 {
+        margin: 15px 0;
+    }
+
+    #bg {
+        background-image: url(https://www.wellrx.com/media/u5yere0x/pharmacy-history.jpg?anchor=center&mode=crop&width=1109&height=537&rnd=132410335822200000);
+        background-size: cover;
+        height: 55vh;
+        width: 100%;
+    }
+
+    button {
+        background-color: green;
+        border: none;
+        border-radius: 5px;
+        height: 50px;
+        width: 200px;
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    button:hover {
+        box-shadow: 0 0 5px green;
+    }
+</style>
 
 <div class="text-center">
-    <h1>Welcome to pharmacy TEST</h1>
+    <h1>Welcome to the pharmacy MVC</h1>
+    <div id="bg"></div>
+    <a asp-action="Index" asp-controller="Medicine"><button>Go to medicines</button></a>
 </div>

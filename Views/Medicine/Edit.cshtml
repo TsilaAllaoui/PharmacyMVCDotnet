@@ -1,0 +1,65 @@
+@model Medicine
+
+<style>
+    button {
+        background-color: blue;
+        border: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+        padding: 5px 15px;
+    }
+
+    label {
+        margin: 0.5rem 0;
+    }
+
+    #dropdown {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #dropdown>select {
+        height: 2rem;
+        width: 15%;
+    }
+</style>
+
+<h1>Edit</h1>
+<form asp-action="Edit" method="POST">
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" id="name" placeholder="Enter medicine name...">
+        <span asp-validation-for="Name" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price:</label>
+        <input type="number" asp-for="Price" class="form-control" id="price" placeholder="Enter medicine price...">
+        <span asp-validation-for="Name" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity">Quantity:</label>
+        <input type="number" asp-for="Quantity" class="form-control" id="quantity"
+            placeholder="Enter medicine quantity...">
+        <span asp-validation-for="Name" class="text-danger" />
+    </div>
+    <div class="form-group" id="dropdown">
+        <label asp-for="Type">Type:</label>
+        <select name="type" id="type">
+            <option value="@MedicineType.Liquid">Liquid</option>
+            <option value="@MedicineType.Tablet">Tablet</option>
+            <option value="@MedicineType.Capsule">Capsule</option>
+            <option value="@MedicineType.Suppositorie">Suppositorie</option>
+            <option value="@MedicineType.Drop">Drop</option>
+            <option value="@MedicineType.Inhaler">Inhaler</option>
+            <option value="@MedicineType.Injection">Injection</option>
+            <option value="@MedicineType.Lotion">Lotion</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Image:</label>
+        <input type="text" asp-for="Image" class="form-control" id="image" placeholder="Enter medicine image...">
+        <span asp-validation-for="Image" class="text-danger" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
