@@ -44,15 +44,7 @@
     </div>
     <div class="form-group" id="dropdown">
         <label asp-for="Type">Type:</label>
-        <select name="type" id="type">
-            <option value="@MedicineType.Liquid">Liquid</option>
-            <option value="@MedicineType.Tablet">Tablet</option>
-            <option value="@MedicineType.Capsule">Capsule</option>
-            <option value="@MedicineType.Suppositorie">Suppositorie</option>
-            <option value="@MedicineType.Drop">Drop</option>
-            <option value="@MedicineType.Inhaler">Inhaler</option>
-            <option value="@MedicineType.Injection">Injection</option>
-            <option value="@MedicineType.Lotion">Lotion</option>
+        <select asp-for="Type" asp-items="@Html.GetEnumSelectList<MedicineType>()">
         </select>
         <span asp-validation-for="Type" class="text-danger" />
     </div>

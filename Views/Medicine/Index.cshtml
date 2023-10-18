@@ -86,6 +86,10 @@
         transform: none;
         box-shadow: 0 0 5px green;
     }
+
+    a {
+        text-decoration: none;
+    }
 </style>
 
 <div id="header">
@@ -108,15 +112,16 @@
                 <p>@medicine.Name</p>
                 <div>
                     <div>
-                        <button>
-                            <a id=" view-button" asp-controller="Medicine" asp-action="Details"
-                                asp-route-id="@medicine.Id">View
-                            </a>
-                        </button>
-                        <button>
-                            <a id="view-button" asp-controller="Medicine" asp-action="Edit" asp-route-id="@medicine.Id">Edit
-                            </a>
-                        </button>
+                        <a id=" view-button" asp-controller="Medicine" asp-action="Details" asp-route-id="@medicine.Id">
+                            <button>
+                                View
+                            </button>
+                        </a>
+                        <a id="view-button" asp-controller="Medicine" asp-action="Edit" asp-route-id="@medicine.Id">
+                            <button>
+                                Edit
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
