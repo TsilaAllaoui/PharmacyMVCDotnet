@@ -19,7 +19,7 @@ namespace PharmacyMVC.Controllers
             return View(await _medicineService.GetAllMedicines());
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }

@@ -8,6 +8,8 @@
         public int Price { get; set; }
         public long Quantity { get; set; }
 
+        public string Image { get; set; } = "https://placehold.co/600x400";
+
         public MedicineType Type { get; set; }
     }
 }
